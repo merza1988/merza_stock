@@ -4,25 +4,28 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import domain.BankAccountException;
+import domain.CustomerAccountException;
+
+
 
 public class OracleConnection
 {
 	private Connection connection;
 	
-	public OracleConnection() throws BankAccountException
+	public OracleConnection() throws CustomerAccountException
 	{
 		try
 		{
 			Class.forName("oracle.jdbc.OracleDriver");
+			open();
 		}
 		catch (ClassNotFoundException e)
 		{
-			throw new BankAccountException("Couldn't find database driver!");
+			throw new CustomerAccountException("Couldn't find database driver!");
 		}
 	}
 	
-	public void open() throws BankAccountException
+	public void open() throws CustomerAccountException
 	{
 		try
 		{
@@ -30,11 +33,11 @@ public class OracleConnection
 		}
 		catch (SQLException e)
 		{
-			throw new BankAccountException("Couldn't open database connection!");
+			throw new CustomerAccountException("Couldn't open database connection!");
 		}
 	}
 	
-	public void close() throws BankAccountException
+	public void close() throws CustomerAccountException
 	{
 		try
 		{
@@ -42,7 +45,7 @@ public class OracleConnection
 		}
 		catch (SQLException e)
 		{
-			throw new BankAccountException("Couldn't close database connection!");
+			throw new CustomerAccountException("Couldn't close database connection!");
 		}
 	}
 	

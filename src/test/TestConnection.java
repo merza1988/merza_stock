@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import connection.OracleConnection;
-import domain.BankAccountException;
+
+import domain.CustomerAccountException;
 
 public class TestConnection
 {
@@ -18,7 +19,7 @@ public class TestConnection
 			System.out.println(connection.getMetaData().getDatabaseMajorVersion());
 			oracleConnection.close();
 		}
-		catch (BankAccountException e)
+		catch (CustomerAccountException e)
 		{
 			System.out.println(e.getMessage());
 		}
